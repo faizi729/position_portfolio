@@ -130,71 +130,58 @@ Used for audit, analytics, or external stream processing.
 
 ---
 
-## ⚙️ How to Run Locally
+⚙️ How to Run Locally
+🧩 Setup Instructions
 
-### 🧩 Backend Setup
+Clone the repository:
 
-1. Clone the repo:
+git clone https://github.com/<your-username>/portfolio_tracker.git
+cd portfolio_tracker
 
-   ```bash
-   git clone https://github.com/<your-username>/portfolio_tracker.git
-   cd portfolio_tracker/backend
-   ```
 
-2. Install dependencies:
+Create your .env file:
+Copy from the example and update credentials.
 
-   ```bash
-   npm install
-   ```
+cp .env.example .env
 
-3. Create `.env` file:
 
-   ```bash
-   DB_URL=postgres://postgres:postgres@localhost:5432/portfolio
-   KAFKA_BROKER=localhost:9092
-   PORT=5000
-   JWT_SECRET=your_secret
-   ```
+Example:
 
-4. Run database migrations / sync models:
+# PostgreSQL
+DB_URL=postgres://postgres:postgres@localhost:5432/portfolio
 
-   ```bash
-   npm run sync
-   ```
+# Kafka
+KAFKA_BROKER=localhost:9092
 
-5. Start the server:
+# Server
+PORT=5000
+JWT_SECRET=your_secret
 
-   ```bash
-   npm start
-   ```
 
-Backend runs at → **[http://localhost:5000](http://localhost:5000)**
+Install dependencies (backend + frontend together):
 
----
+npm run install:all
 
-### 🎨 Frontend Setup
 
-1. Go to frontend folder:
+This script installs:
 
-   ```bash
-   cd ../frontend
-   ```
+/backend dependencies
 
-2. Install dependencies:
+/frontend dependencies
+all in one command 🔥
 
-   ```bash
-   npm install
-   ```
+This spins up Kafka + Zookeeper locally for trade event streaming.
 
-3. Run the app:
+Start the entire app (backend + frontend):
 
-   ```bash
-   npm run dev
-   ```
+npm run start
 
-Frontend runs at → **[http://localhost:5173](http://localhost:5173)**
 
----
+This launches both servers concurrently:
+
+Backend: http://localhost:5000
+
+Frontend: http://localhost:5173
 
 ## 🧠 Assumptions
 
