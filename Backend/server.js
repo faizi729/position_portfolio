@@ -5,12 +5,10 @@ import "./models/User.model.js"; // Load models (ensure associations are defined
  // example route file
 import morgan from "morgan";
 import cors from "cors";
-import { login, register } from "./controllers/user.controller.js";
+
 import { connectKafka } from "./config/kafka.js";
 import { startTradeConsumer } from "./kafka/consumers/trade.consumer.js";
-import { tradeController } from "./controllers/trade.controller.js";
-import {  getPositionsController } from "./controllers/lot.controller.js";
-import { getRealizedPnL } from "./controllers/realize.controller.js";
+
 import router from "./routes/route.js";
 
 dotenv.config();
@@ -34,15 +32,15 @@ const startServer = async () => {
     await sequelize.sync({ alter: true });
     console.log("✅ All tables created & associated successfully.");
 
+    // Connect Kafka separately
     await connectKafka();
     await startTradeConsumer();
 
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
   } catch (error) {
-    console.error("❌ Unable to connect to the database:", error);
-    process.exit(1); // Exit the process if DB fails
+    console.error("❌ Server startup failed:", error.message || error);
+    process.exit(1);
   }
 };
-
 startServer();

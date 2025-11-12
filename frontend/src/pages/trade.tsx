@@ -48,7 +48,7 @@ const TradeForm: React.FC = () => {
   }
 
   try {
-    console.log("Trade Data:", form);
+  
     await axios.post(`${backend_url}/api/trades`, form);
     alert("✅ Trade submitted successfully!");
 

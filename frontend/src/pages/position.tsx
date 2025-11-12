@@ -22,7 +22,7 @@ const Positions: React.FC = () => {
        
     }
   }, []);
-  console.log("UserID in Positions Page:", userId);
+  
 
   useEffect(() => {
     if (!userId) return;
@@ -35,7 +35,7 @@ const Positions: React.FC = () => {
       .catch((err) => console.error(err));
   }, [userId,backend_url]);
 
-  console.log("Fetched Positions:", positions);
+  
 
   return (
     <>
