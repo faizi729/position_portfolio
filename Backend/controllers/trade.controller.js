@@ -51,7 +51,7 @@ export const tradeController = async (req, res) => {
       );
 
       await transaction.commit();
-      if(process.env.NODE_ENV === "production"){
+      if(process.env.NODE_ENV !== "production"){
 
         await publishTradeToKafka(trade);
       }
@@ -120,7 +120,7 @@ export const tradeController = async (req, res) => {
       }
 
       await transaction.commit();
-      if(process.env.NODE_ENV === "production"){
+      if(process.env.NODE_ENV !== "production"){
 
         await publishTradeToKafka(trade);
       }
