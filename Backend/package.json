@@ -21,10 +21,10 @@
     "jsonwebtoken": "^9.0.2",
     "kafkajs": "^2.2.4",
     "morgan": "^1.10.1",
-    "my-app": "file:..",
+    
     "nodemon": "^3.1.10",
     "pg": "^8.16.3",
-    "portfolio-tracker": "file:..",
+    
     "sequelize": "^6.37.7",
     "winston": "^3.18.3",
     "winston-daily-rotate-file": "^5.0.0"
