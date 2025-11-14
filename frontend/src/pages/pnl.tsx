@@ -1,7 +1,35 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+interface SummaryRow {
+  symbol: string;
+  totalQty: number;
+  totalProfit: number;
+}
 
+interface RealizedTrade {
+  id: string;
+  symbol: string;
+  qty: number;
+  proceeds: string;
+  cost: string;
+  profit: string;
+  timestamp: string;
+  trade?: {
+    symbol: string;
+    tradeType: string;
+    userId: string;
+  };
+  lot?: {
+    symbol: string;
+    avgPrice: number;
+  };
+}
+
+interface ApiResponse {
+  summary: SummaryRow[];
+  realizedTrades: RealizedTrade[];
+}
 const PnLPage: React.FC = () => {
   const [data, setData] = useState<ApiResponse | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
